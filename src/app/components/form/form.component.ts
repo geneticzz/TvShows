@@ -8,8 +8,7 @@ import {DataService} from '../../services/data.service';
 })
 export class FormComponent implements OnInit {
 
-  public id: number;
-  public bz: bz;
+  public bz: string;
 
   constructor(private dataService: DataService) { }
 
@@ -17,6 +16,6 @@ export class FormComponent implements OnInit {
   }
 
   save() {
-    this.dataService.save(this.id, this.bz);
+    this.dataService.save(this.bz);
   }
 }

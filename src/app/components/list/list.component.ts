@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../services/data.service';
+import {TvShows} from '../../modules/TvShows';
 
 @Component({
   selector: 'app-list',
@@ -21,5 +22,9 @@ export class ListComponent implements OnInit {
 
   del(show: TvShows) {
     return this.dataService.del(show);
+  }
+
+  showDetail(show: TvShows) {
+    this.dataService.showDetail(show);
   }
 }

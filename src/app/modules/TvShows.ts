@@ -1,3 +1,8 @@
 export class TvShows {
-  constructor(public id: number, public bz: string) { }
+  img: string;
+  desc: string;
+  constructor(public bz: string) {
+    this.img = null;
+    this.desc = null;
+  }
 }

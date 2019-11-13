@@ -2,9 +2,6 @@
   <table class="table">
     <thead class="thead-dark">
     <th>
-      ID
-    </th>
-    <th>
       Bezeichnung
     </th>
     <th>
@@ -13,9 +10,12 @@
     </thead>
     <tbody>
     <tr *ngFor="let show of shows">
-      <td>{{show.id}}</td>
-      <td>{{show.bz}}</td>
-      <button type="button" class="btn btn-danger" (click)="del(show)">löschen</button>
+      <td (click)="showDetail(show)">{{show.bz}}</td>
+      <button type="button" class="btn btn-outline-danger" (click)="del(show)">
+        <i class="material-icons">
+          delete_outline
+        </i>
+      </button>
     </tr>
     </tbody>
   </table>
