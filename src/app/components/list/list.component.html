@@ -1,0 +1,21 @@
+  <h3>TV-Shows</h3>
+  <table class="table">
+    <thead class="thead-dark">
+    <th>
+      ID
+    </th>
+    <th>
+      Bezeichnung
+    </th>
+    <th>
+      Löschen
+    </th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let show of shows">
+      <td>{{show.id}}</td>
+      <td>{{show.bz}}</td>
+      <button type="button" class="btn btn-danger" (click)="del(show)">löschen</button>
+    </tr>
+    </tbody>
+  </table>
