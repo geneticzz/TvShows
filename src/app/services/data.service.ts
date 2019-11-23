@@ -37,7 +37,7 @@ export class DataService {
       show.img = data['image']['medium'];
       show.desc = data['summary'];
       show.genre = data['genres'];
-      show.watchableOn = data['webChannel']['name'];
+      show.watchableOn = data['network']['name'];
       this.detailShow = show;
   }
 }
