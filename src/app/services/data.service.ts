@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {TvShows} from '../modules/TvShows';
 import {HttpClient} from '@angular/common/http';
 import {isEmpty} from 'rxjs/operators';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,22 @@ export class DataService {
   }
 
   async showDetail(show: TvShows) {
-      const data = await this.http.get('http://api.tvmaze.com/singlesearch/shows?q=' + show.bz).toPromise();
-      show.bz = data['name'];
-      show.img = data['image']['medium'];
-      show.desc = data['summary'];
-      show.genre = data['genres'];
-      show.watchableOn = data['network']['name'];
-      this.detailShow = show;
+    const data = await this.http.get('http://api.tvmaze.com/singlesearch/shows?q=' + show.bz).toPromise();
+    show.bz = data['name'];
+    show.img = data['image']['medium'];
+    show.desc = data['summary'];
+    show.genre = data['genres'];
+    try {
+      show.releasedOn = data['network']['name'];
+    } catch (e) {
+      show.releasedOn = 'Keine Angabe';
+    }
+    try {
+      show.watchableOn = data['webChannel']['name'];
+    } catch (e) {
+      show.watchableOn = 'Keine Angabe';
+    }
+    show.released = data['premiered'];
+    this.detailShow = show;
   }
 }

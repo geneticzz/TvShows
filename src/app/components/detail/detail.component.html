@@ -3,4 +3,6 @@
 <img [src]="detailShow.img">
 <p [innerHTML]="detailShow.desc"></p>
 <p *ngIf="detailShow"><b >Genres: </b> {{detailShow.genre}}</p>
-<p *ngIf="detailShow"><b >Verfügbar bei: </b> {{detailShow.watchableOn}}</p>
+<p *ngIf="detailShow"><b >Sender: </b> {{detailShow.releasedOn}}</p>
+<p *ngIf="detailShow"><b >Schaubar: </b> {{detailShow.watchableOn}}</p>
+<p *ngIf="detailShow"><b >Erstausstrahlung: </b> {{detailShow.released}}</p>
