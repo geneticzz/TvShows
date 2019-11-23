@@ -25,6 +25,7 @@ export class DataService {
   async save(bz: string) {
     try {
       const data = await this.http.get('http://api.tvmaze.com/singlesearch/shows?q=' + bz).toPromise();
+      bz = data['name'];
       this._shows.push(new TvShows(bz));
     } catch (e) {
       alert('Diese Serie gibt es nicht.');
