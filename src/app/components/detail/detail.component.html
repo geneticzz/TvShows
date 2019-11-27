@@ -1,8 +1,12 @@
-<h3>{{detailShow.bz}}</h3>
-
-<img [src]="detailShow.img">
-<p [innerHTML]="detailShow.desc"></p>
-<p *ngIf="detailShow"><b >Genres: </b> {{detailShow.genre}}</p>
-<p *ngIf="detailShow"><b >Sender: </b> {{detailShow.releasedOn}}</p>
-<p *ngIf="detailShow"><b >Schaubar: </b> {{detailShow.watchableOn}}</p>
-<p *ngIf="detailShow"><b >Erstausstrahlung: </b> {{detailShow.released}}</p>
+<div class="card" style="width: 18rem;" *ngIf="detailShow">
+  <img [src]="detailShow.img" class="card-img-top" alt="NO IMAGE!">
+  <div class="card-body">
+    <h5 class="card-title"><b>{{detailShow.bz}}</b></h5>
+    <p class="card-text" [innerHTML]="detailShow.desc"></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Genres: </b> {{detailShow.genre}}</li>
+    <li class="list-group-item"><b>Sender: </b> {{detailShow.releasedOn}}</li>
+    <li class="list-group-item"><b>Schaubar: </b> {{detailShow.watchableOn}}</li>
+    <li class="list-group-item"><b>Erstausstrahlung: </b> {{detailShow.released}}</li>
+  </ul>

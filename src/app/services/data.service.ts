@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TvShows} from '../modules/TvShows';
 import {HttpClient} from '@angular/common/http';
 import {isEmpty} from 'rxjs/operators';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
+import {Observable} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   detailShow: TvShows;
-  _shows: TvShows[] = [];
-  constructor(private http: HttpClient) {
-    this._shows.push(new TvShows('Breaking Bad'));
+  _shows: Observable<any>;
 
+  constructor(private http: HttpClient, private af: AngularFirestore) {
+    this._shows = af.collection('shows').valueChanges({idField: 'id'});
   }
 
   shows() {
@@ -20,16 +23,21 @@ export class DataService {
   }
 
   del(show: TvShows) {
-    this._shows = this._shows.filter(t => t !== show);
+    this.af.collection('shows').doc(show.id).delete();
   }
 
-  async save(bz: string) {
+  async save(bz: string): Promise<boolean> {
     try {
       const data = await this.http.get('http://api.tvmaze.com/singlesearch/shows?q=' + bz).toPromise();
       bz = data['name'];
-      this._shows.push(new TvShows(bz));
+      this.af.collection('shows').add({
+        bz: bz,
+      });
+      // this._shows.push(new TvShows(bz));
+      return true;
     } catch (e) {
       alert('Diese Serie gibt es nicht.');
+      return false;
     }
   }
 
@@ -49,7 +57,11 @@ export class DataService {
     } catch (e) {
       show.watchableOn = 'Keine Angabe';
     }
-    show.released = data['premiered'];
+    try {
+      show.released = data['premiered'];
+    } catch (e) {
+      show.watchableOn = 'Keine Angabe';
+    }
     this.detailShow = show;
   }
 }

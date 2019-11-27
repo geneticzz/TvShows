@@ -1,21 +1,21 @@
-  <h3>TV-Shows</h3>
-  <table class="table">
-    <thead class="thead-dark">
-    <th>
-      Bezeichnung
-    </th>
-    <th>
-      Löschen
-    </th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let show of shows">
-      <td (click)="showDetail(show)">{{show.bz}}</td>
-      <button type="button" class="btn btn-outline-danger" (click)="del(show)">
-        <i class="material-icons">
-          delete_outline
-        </i>
-      </button>
-    </tr>
-    </tbody>
-  </table>
+<h3>TV-Shows</h3>
+<table class="table">
+  <thead class="thead-dark">
+  <th>
+    Bezeichnung
+  </th>
+  <th>
+    Löschen
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let show of shows | async">
+    <td (click)="showDetail(show)">{{show.bz}}</td>
+    <button type="button" class="btn btn-outline-danger" (click)="del(show)">
+      <i class="material-icons">
+        delete_outline
+      </i>
+    </button>
+  </tr>
+  </tbody>
+</table>
