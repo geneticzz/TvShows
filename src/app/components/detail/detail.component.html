@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;" *ngIf="detailShow">
+<div class="card" style="width: 26rem;" *ngIf="detailShow">
   <img [src]="detailShow.img" class="card-img-top" alt="NO IMAGE!">
   <div class="card-body">
     <h5 class="card-title"><b>{{detailShow.bz}}</b></h5>
@@ -9,4 +9,5 @@
     <li class="list-group-item"><b>Sender: </b> {{detailShow.releasedOn}}</li>
     <li class="list-group-item"><b>Schaubar: </b> {{detailShow.watchableOn}}</li>
     <li class="list-group-item"><b>Erstausstrahlung: </b> {{detailShow.released}}</li>
+    <li class="list-group-item"><b>Bewertung: </b> {{detailShow.rating}}</li>
   </ul>

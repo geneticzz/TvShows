@@ -6,6 +6,7 @@ export class TvShows {
   releasedOn: string;
   watchableOn: string;
   released: string;
+  rating: string;
 
   constructor(public bz: string) {
     this.id = null;
@@ -15,5 +16,6 @@ export class TvShows {
     this.releasedOn = null;
     this.watchableOn = null;
     this.released = null;
+    this.rating = null;
   }
 }

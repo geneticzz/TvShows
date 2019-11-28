@@ -42,7 +42,7 @@ export class DataService {
   async showDetail(show: TvShows) {
     const data = await this.http.get('http://api.tvmaze.com/singlesearch/shows?q=' + show.bz).toPromise();
     show.bz = data['name'];
-    show.img = data['image']['medium'];
+    show.img = data['image']['original'];
     show.desc = data['summary'];
     show.genre = data['genres'];
     try {
@@ -59,7 +59,7 @@ export class DataService {
       show.released = data['premiered'];
     } catch (e) {
       show.watchableOn = 'Keine Angabe';
-    }
+    } show.rating = data.rating.average + ' von 10.0';
     this.detailShow = show;
   }
 }
