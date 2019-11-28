@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
 import {TvShows} from '../modules/TvShows';
 import {HttpClient} from '@angular/common/http';
-import {isEmpty} from 'rxjs/operators';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {Observable} from 'rxjs';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {FirebaseListObservable} from '@angular/fire/database-deprecated';
+import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +10,7 @@ import {FirebaseListObservable} from '@angular/fire/database-deprecated';
 export class DataService {
   detailShow: TvShows;
   _shows: Observable<any>;
+  private searchtextv2: string;
 
   constructor(private http: HttpClient, private af: AngularFirestore) {
     this._shows = af.collection('shows').valueChanges({idField: 'id'});

@@ -10,6 +10,7 @@ import {DetailComponent} from './components/detail/detail.component';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 
 @NgModule({

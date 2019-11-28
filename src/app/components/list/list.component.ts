@@ -8,10 +8,13 @@ import {TvShows} from '../../modules/TvShows';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+  searchtext = '';
 
   constructor(private dataService: DataService) {
 
   }
+
+
 
   get shows() {
     return this.dataService.shows();
@@ -22,6 +25,10 @@ export class ListComponent implements OnInit {
 
   del(show: TvShows) {
     return this.dataService.del(show);
+  }
+
+  giveSearchTextToService() {
+    return this.searchtext;
   }
 
   showDetail(show: TvShows) {

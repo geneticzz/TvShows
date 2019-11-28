@@ -1,8 +1,11 @@
 <h3>TV-Shows</h3>
-<table class="table">
-  <thead class="thead-dark">
+<div class="row">
+  <input placeholder="Serie suchen." [(ngModel)]="searchtext" class="col-lg-11">
+</div>
+<table class="table table-hover">
+  <thead class="thead">
   <th>
-    Bezeichnung
+    Serie
   </th>
   <th>
     Löschen
@@ -10,12 +13,13 @@
   </thead>
   <tbody>
   <tr *ngFor="let show of shows | async">
-    <td (click)="showDetail(show)">{{show.bz}}</td>
-    <button type="button" class="btn btn-outline-danger" (click)="del(show)">
+    <td (click)="showDetail(show)" *ngIf="show.bz.toLowerCase().includes(searchtext.toLowerCase())" >{{show.bz}}</td>
+    <td><button type="button" class="btn btn-outline-danger" (click)="del(show)"*ngIf="show.bz.toLowerCase().includes(searchtext.toLowerCase())">
       <i class="material-icons">
         delete_outline
       </i>
     </button>
+    </td>
   </tr>
   </tbody>
 </table>
