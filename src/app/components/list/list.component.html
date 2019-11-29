@@ -14,7 +14,7 @@
   <tbody>
   <tr *ngFor="let show of shows | async">
     <td (click)="showDetail(show)" *ngIf="show.bz.toLowerCase().includes(searchtext.toLowerCase())" >{{show.bz}}</td>
-    <td><button type="button" class="btn btn-outline-danger" (click)="del(show)"*ngIf="show.bz.toLowerCase().includes(searchtext.toLowerCase())">
+    <td *ngIf="show.bz.toLowerCase().includes(searchtext.toLowerCase())"><button type="button" class="btn btn-outline-danger" (click)="del(show)">
       <i class="material-icons">
         delete_outline
       </i>

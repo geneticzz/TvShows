@@ -59,7 +59,7 @@ export class DataService {
       show.released = data['premiered'];
     } catch (e) {
       show.watchableOn = 'Keine Angabe';
-    } show.rating = data.rating.average + ' von 10.0';
+    } show.rating = data['rating']['average'] + ' von 10.0';
     this.detailShow = show;
   }
 }
